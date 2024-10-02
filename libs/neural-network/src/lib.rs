@@ -1,14 +1,30 @@
-pub fn add(left: u64, right: u64) -> u64 {
-    left + right
+// we will be propagating numbers here
+
+#[derive(Debug)]
+pub struct Network {
+    layers: Vec<Layer>,
 }
 
-#[cfg(test)]
-mod tests {
-    use super::*;
-
-    #[test]
-    fn it_works() {
-        let result = add(2, 2);
-        assert_eq!(result, 4);
+impl Network {
+    pub fn propagate(&self, input: Vec<f32>) -> Vec<f32> {
+        todo!()
     }
+}
+
+#[derive(Debug)]
+struct Layer {
+    neurons: Vec<Neuron>
+}
+
+// numbers will have to be pushed through each layer
+impl Layer {
+    pub fn propagate(&self, input: Vec<f32>) -> Vec<f32> {
+        todo!()
+    }
+}
+
+#[derive(Debug)]
+struct Neuron {
+    bias:f3,
+    weights: Vec<f32>,
 }
