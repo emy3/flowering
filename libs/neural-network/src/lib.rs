@@ -48,3 +48,15 @@ impl Neuron {
         (self.bias + output).max(0.0)
     }
 }
+
+// creating a separate type to untangle arguments name to just layers
+#[derive(Debug)]
+pub struct LayerTopology {
+    pub neurons: usize,
+}
+
+impl Network {
+    pub fn random(layers: Vec<LayerTopology>) -> Self {
+        todo!()
+    }
+}
