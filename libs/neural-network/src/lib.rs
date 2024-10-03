@@ -15,6 +15,13 @@ impl Network {
         }
         inputs
     }
+
+    // can also write the same with the built in folds
+    // pub fn propagate(&self, inputs: Vec<f32>) -> Vec<f32> {
+    //     self.layers
+    //         .iter()
+    //         .fold(inputs, |inputs, layer| layer.propagate(inputs))
+    // }
 }
 
 #[derive(Debug)]
@@ -25,7 +32,12 @@ struct Layer {
 // numbers will have to be pushed through each layer
 impl Layer {
     pub fn propagate(&self, inputs: Vec<f32>) -> Vec<f32> {
-        todo!()
+        let mut outputs = outputs;
+        for neuro in &self.neurons {
+            let output = neuron.propagate(&inputs);
+            outputs.push(output);
+        }
+        outputs
     }
 }
 
@@ -33,4 +45,19 @@ impl Layer {
 struct Neuron {
     bias:f3,
     weights: Vec<f32>,
+}
+
+impl Neuron {
+    fn propagate(&self, inputs: &[f32]) -> f32 {
+        // macro panics if two are not equal - terminate with error
+        assert_eq!(inputs.len(), self.weights.len());
+
+        let output = inputs
+            .iter()
+            .zip(&self.weights)
+            .map(|(input, weight)| input * weight)
+            .sum::<f32>();
+
+        (self.bias + output).max(0.0)
+    }
 }
