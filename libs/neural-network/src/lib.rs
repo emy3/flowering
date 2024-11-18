@@ -58,5 +58,11 @@ pub struct LayerTopology {
 impl Network {
     pub fn random(layers: Vec<LayerTopology>) -> Self {
         todo!()
+        // mut built_layers new vec
+        // loop the layers.len
+        // input the size for neurons
+        // output layers i + 1 neurons
+        // built layers to push random layer of input and output size
+        // return the self layers of built layers
     }
 }
